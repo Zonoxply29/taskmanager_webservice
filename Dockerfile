@@ -1,4 +1,4 @@
-﻿FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
 # Copiar el archivo de proyecto y restaurar dependencias
@@ -15,9 +15,9 @@ WORKDIR /app
 # Copiar los archivos publicados al contenedor
 COPY --from=build /app/publish ./
 
-# Configuración del entorno y puerto
 ENV ASPNETCORE_ENVIRONMENT=Production
 ENV PORT=5000
 
-# Definir el punto de entrada para la ejecución de la aplicación
 ENTRYPOINT ["dotnet", "taskmanager_webservice.dll"]
+
+
