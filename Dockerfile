@@ -2,18 +2,18 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
 # Copiar el archivo de proyecto y restaurar dependencias
-COPY *.csproj ./
+COPY taskmanager_webservice.csproj ./
 RUN dotnet restore
 
 # Copiar el resto de los archivos y compilar
-COPY . .
+COPY . ./
 RUN dotnet publish -c Release -o /app/publish
 
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
 
 # Copiar los archivos publicados al contenedor
-COPY --from=build /app/publish .
+COPY --from=build /app/publish ./
 
 # Configuración del entorno y puerto
 ENV ASPNETCORE_ENVIRONMENT=Production
