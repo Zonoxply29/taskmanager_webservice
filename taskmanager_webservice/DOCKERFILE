@@ -2,7 +2,7 @@
 WORKDIR /src
 
 # Copiar el archivo de proyecto y restaurar dependencias
-COPY *.csproj ./
+COPY taskmanager_webservice.csproj ./
 RUN dotnet restore
 
 # Copiar el resto de los archivos y compilar
