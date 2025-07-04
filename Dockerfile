@@ -15,10 +15,9 @@ WORKDIR /app
 # Copiar los archivos publicados al contenedor
 COPY --from=build /app/publish ./
 
-# Configuración del entorno y puerto
 ENV ASPNETCORE_ENVIRONMENT=Production
 ENV PORT=5000
 
-# Definir el punto de entrada para la ejecución de la aplicación
 ENTRYPOINT ["dotnet", "taskmanager_webservice.dll"]
+
 
